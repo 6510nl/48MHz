@@ -1,0 +1,1 @@
+# Location for storing text related files like scroll text

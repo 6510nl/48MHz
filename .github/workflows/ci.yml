@@ -1,0 +1,119 @@
+# Name of the workflow
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: 
+      - main
+    paths:
+      - source/**
+  pull_request:
+    branches: 
+      - main
+    paths:
+      - source/**
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+
+  # This workflow contains a single job called "build"
+  build:
+  
+    # The type of runner that the job will run on
+    runs-on: self-hosted
+    
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: checkout
+        uses: actions/checkout@v2
+
+      # Importing a .env file and use the contents as variables
+      - name: dotenv
+        id: dotenv
+        uses: falti/dotenv-action@v0.2.7
+        with:
+          path: source/variables.env
+          
+      # Check if the KickAss.jar exists in de ~/actions-runner/_work/_tool directory
+      - name: Check if KickAss.jar exists
+        id: check_kickass_jar
+        uses: andstor/file-existence-action@v1
+        with:
+          files: ../../_tool/KickAss.jar
+          
+      - name: Check if KickAssembler.zip exists
+        if: steps.check_kickass_jar.outputs.files_exists == 'false'
+        id: check_kickassembler_zip
+        uses: andstor/file-existence-action@v1
+        with:
+          files: ../../_tool/KickAssembler.zip
+
+      - name: Download and extract KickAssembler.zip
+        if: steps.check_kickassembler_zip.outputs.files_exists == 'false'
+        run: |
+          wget http://theweb.dk/KickAssembler/KickAssembler.zip --user-agent=web -O $RUNNER_TOOL_CACHE/KickAssembler.zip
+          unzip $RUNNER_TOOL_CACHE/KickAssembler.zip KickAss.jar -d $RUNNER_TOOL_CACHE
+                
+      - name: Extract KickAssembler.zip
+        if: steps.check_kickassembler_zip.outputs.files_exists == 'true'
+        run: unzip $RUNNER_TOOL_CACHE/KickAssembler.zip KickAss.jar -d $RUNNER_TOOL_CACHE
+
+        # Check if Java JRE is installed
+      - name: Check for package using dpkg
+        uses: mathiasvr/command-output@v1
+        continue-on-error: true
+        id: cmd
+        with:
+          run: dpkg -l openjdk-11-jre
+
+      - run: |
+          echo Found openjdk-11-jre
+        if: ${{ steps.cmd.outputs.stdout }}
+
+      - run: | 
+          echo Install openjdk-11-jre
+          sudo apt --yes install openjdk-11-jre
+        if: ${{ steps.cmd.outputs.stderr }}
+
+      # Check if Java exists in de /usr/bin/ directory
+      - name: Check openjdk existence
+        id: check_java
+        uses: andstor/file-existence-action@v1
+        with:
+          files: /usr/bin/java
+       
+      # Compile the source file to a binairy .prg file using KickAss
+      - name: Compile source file to binary .prg file
+        run: java -jar $RUNNER_TOOL_CACHE/KickAss.jar -showmem $GITHUB_WORKSPACE/${{ steps.dotenv.outputs.c64_source_root }}/${{ steps.dotenv.outputs.c64_source_folder }}/${{ steps.dotenv.outputs.c64_source_file }}
+  
+        # Check if the KickAss.jar exists in de ~/actions-runner/_work/_tool directory
+      - name: Check 1541u2.pl existence
+        id: check_1541u2_pl
+        uses: andstor/file-existence-action@v1
+        with:
+          files: ../../_tool/1541u2.pl
+    
+      - name: Checkout tools repo
+        if: steps.check_1541u2_pl.outputs.files_exists == 'false'
+        uses: actions/checkout@v2
+        with:
+          repository: markusC64/1541ultimate2
+          ref: tools
+          path: remote-repo/markusC64
+          
+      - name: Copy 1541u2.pl to $RUNNER_TOOL_CACHE
+        if: steps.check_1541u2_pl.outputs.files_exists == 'false'
+        run: cp remote-repo/markusC64/1541u2.pl $RUNNER_TOOL_CACHE
+          
+        # Deploy the assembled .prg binary to the Ultimate device using 1541u2.pl
+      - name: Deploy .PRG to Ultimate devices
+        continue-on-error: true
+        run: perl $RUNNER_TOOL_CACHE/1541u2.pl ${{ steps.dotenv.outputs.c64_deployment_host00 }} -c run:$GITHUB_WORKSPACE/${{ steps.dotenv.outputs.c64_source_root }}/${{ steps.dotenv.outputs.c64_source_folder }}/${{ steps.dotenv.outputs.c64_destination_file }}
+      
