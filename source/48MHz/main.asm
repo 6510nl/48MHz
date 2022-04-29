@@ -145,11 +145,11 @@ sta $1000+3
 lda $d0dc	//	SuperCPU Detect
 
 lda trut
-cmp #$10
+cmp #$0f
 bne door
 	lda #$00
 	sta trut
-	inc $0400
+	inc $d031
 door: 
 inc trut
 rts
