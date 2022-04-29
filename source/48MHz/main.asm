@@ -131,16 +131,16 @@ rti	//	;Return From Interrupt, this will load into the Program Counter register 
 
 CheckTurboBit:
 lda $d030	//	Turbo Enable Bit
-sta $0400
+sta $1000
 // sta $1400
 lda $d031	//	U64 Turbo Control
-sta $0400+1
+sta $1000+1
 // sta $1400+1
 lda $d07a	//	Software Speed Select - Normal
-sta $0400+2
+sta $1000+2
 // sta $1400+2
 lda $d07b	//	Software Speed Select - Turbo (20 MHz)($079)
-sta $0400+3
+sta $1000+3
 // sta $1400+3
 lda $d0dc	//	SuperCPU Detect
 rts
