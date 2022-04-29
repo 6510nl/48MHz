@@ -149,7 +149,7 @@ cmp #$0f
 bne door
 	lda #$00
 	sta trut
-	inc $d031
+	sta $d031
 door: 
 inc trut
 rts
