@@ -130,6 +130,7 @@ rti	//	;Return From Interrupt, this will load into the Program Counter register 
 //-----------------------------------------------------------
 
 CheckTurboBit:
+
 lda $d030	//	Turbo Enable Bit
 sta $0400
 // sta $1400
