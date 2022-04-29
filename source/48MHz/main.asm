@@ -147,14 +147,14 @@ lda $d0dc	//	SuperCPU Detect
 lda trut
 cmp #$10
 bne door
-lda #$00
-sta trut
-inc $0500
+	lda #$00
+	sta trut
+	inc $0400
 door: 
 inc trut
 rts
 
-trut .byte 0
+trut:	.byte 0
 
 //-----------------------------------------------------------
 
