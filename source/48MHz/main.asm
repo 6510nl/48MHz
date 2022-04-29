@@ -143,7 +143,18 @@ lda $d07b	//	Software Speed Select - Turbo (20 MHz)($079)
 sta $1000+3
 // sta $1400+3
 lda $d0dc	//	SuperCPU Detect
+
+lda trut
+cmp #$10
+bne door
+lda #$00
+sta trut
+inc $0500
+door: 
+inc trut
 rts
+
+trut .byte 0
 
 //-----------------------------------------------------------
 
