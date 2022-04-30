@@ -34,6 +34,17 @@ sta $d021	// background vector
 lda music.startSong
 jsr music.init 
 
+ldx #$00
+!:	lda #$00
+	sta $0400,X
+	sta $0500,X
+	sta $0600,X
+	sta $0700,X
+
+	inx
+bne !-	
+
+
 sei	//	disable maskable IRQs
 
 lda #$7f
