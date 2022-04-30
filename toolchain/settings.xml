@@ -9,20 +9,20 @@
   <osd_visibility>4</osd_visibility>
   <frame_buffer_count>8</frame_buffer_count>
   <multiframecapture_count>0</multiframecapture_count>
-  <remotestart>0</remotestart>
-  <u64_ip_address>192.168.2.64</u64_ip_address>
+  <remotestart>1</remotestart>
+  <u64_ip_address>10.25.86.64</u64_ip_address>
   <stream_port_video>11000</stream_port_video>
   <stream_port_audio>11001</stream_port_audio>
   <audio_output_device>2</audio_output_device>
   <last_file_path></last_file_path>
   <audioVolume>100</audioVolume>
-  <windowPosManual>0</windowPosManual>
-  <windowPosX>0</windowPosX>
-  <windowPosY>0</windowPosY>
-  <windowWidth>784</windowWidth>
-  <windowHeight>583</windowHeight>
-  <imageOutputResizeWidth>768</imageOutputResizeWidth>
-  <imageOutputResizeHeight>544</imageOutputResizeHeight>
+  <windowPosManual>1</windowPosManual>
+  <windowPosX>953</windowPosX>
+  <windowPosY>516</windowPosY>
+  <windowWidth>974</windowWidth>
+  <windowHeight>523</windowHeight>
+  <imageOutputResizeWidth>683</imageOutputResizeWidth>
+  <imageOutputResizeHeight>484</imageOutputResizeHeight>
   <windowMaximized>0</windowMaximized>
   <color_val_0>0;0;0</color_val_0>
   <color_val_1>239;239;239</color_val_1>
