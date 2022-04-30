@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<U64StreamerApp>
+  <video_mode>0</video_mode>
+  <video_image_ratio>0</video_image_ratio>
+  <video_resize_algo>0</video_resize_algo>
+  <video_scanlines>0</video_scanlines>
+  <video_scanlines_alpha>10</video_scanlines_alpha>
+  <video_scanline_color>0</video_scanline_color>
+  <osd_visibility>4</osd_visibility>
+  <frame_buffer_count>8</frame_buffer_count>
+  <multiframecapture_count>49</multiframecapture_count>
+  <remotestart>1</remotestart>
+  <u64_ip_address>u64.lab.home</u64_ip_address>
+  <stream_port_video>11000</stream_port_video>
+  <stream_port_audio>11001</stream_port_audio>
+  <audio_output_device>2</audio_output_device>
+  <last_file_path>.\</last_file_path>
+  <audioVolume>100</audioVolume>
+  <windowPosManual>0</windowPosManual>
+  <windowPosX>0</windowPosX>
+  <windowPosY>0</windowPosY>
+  <windowWidth>784</windowWidth>
+  <windowHeight>583</windowHeight>
+  <imageOutputResizeWidth>768</imageOutputResizeWidth>
+  <imageOutputResizeHeight>544</imageOutputResizeHeight>
+  <windowMaximized>0</windowMaximized>
+  <color_val_0>0;0;0</color_val_0>
+  <color_val_1>239;239;239</color_val_1>
+  <color_val_2>141;47;52</color_val_2>
+  <color_val_3>106;212;205</color_val_3>
+  <color_val_4>152;53;164</color_val_4>
+  <color_val_5>76;180;66</color_val_5>
+  <color_val_6>44;41;177</color_val_6>
+  <color_val_7>239;239;93</color_val_7>
+  <color_val_8>152;78;32</color_val_8>
+  <color_val_9>91;56;0</color_val_9>
+  <color_val_10>209;103;109</color_val_10>
+  <color_val_11>74;74;74</color_val_11>
+  <color_val_12>123;123;123</color_val_12>
+  <color_val_13>159;239;147</color_val_13>
+  <color_val_14>109;106;239</color_val_14>
+  <color_val_15>178;178;178</color_val_15>
+</U64StreamerApp>
