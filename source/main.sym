@@ -1,6 +1,6 @@
-.label door=$65b5
-.label OpenVerticalBorders=$65ba
-.label start=$654a
-.label irq=$654d
-.label CheckTurboBit=$658b
-.label trut=$65b9
+.label door=$65c8
+.label OpenVerticalBorders=$65cd
+.label start=$655d
+.label irq=$6560
+.label CheckTurboBit=$659e
+.label trut=$65cc
