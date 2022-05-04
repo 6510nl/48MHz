@@ -8,6 +8,14 @@ Ultimate64
 *   Firmware version 1.33 or higher
 *   Turbo Mode set to `Turbo Enable Bit`
 
+# Tool chain
+
+## Windows
+
+https://github.com/markusC64/1541ultimate2/releases/tag/tools-v1.2.1
+
+## Linux
+
 # Turbo Control registers
 
 The turbo mode can be controlled by setting values at specific addresses.
