@@ -1,3 +1,10 @@
+# TABLE OF CONTENTS
+- [System requirements](#System-requirements)
+- [Tool chain Windows](#Tool-chain-Windows) 
+- [Tool chain Linux](#Tool-chain-Linux) 
+- [U64 Turbo Control registers](#U64-turbo-control-registers)
+
+
 # 48MHz
 
 In order to run code on the Ultimate64 using the 48 Mhz mode a set of requirements must be met, see [Turbo Mode control registers documentation](https://1541u-documentation.readthedocs.io/en/latest/config/turbo_mode.html#turbo-control-registers)
@@ -8,15 +15,13 @@ Ultimate64
 *   Firmware version 1.33 or higher
 *   Turbo Mode set to `Turbo Enable Bit`
 
-# Tool chain
-
-## Windows
+# Tool chain Windows
 
 https://github.com/markusC64/1541ultimate2/releases/tag/tools-v1.2.1
 
-## Linux
+# Tool chain Linux
 
-# Turbo Control registers
+# U64 Turbo Control registers
 
 The turbo mode can be controlled by setting values at specific addresses.
 
