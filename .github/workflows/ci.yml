@@ -91,7 +91,7 @@ jobs:
        
       # Compile the source file to a binairy .prg file using KickAss
       - name: Compile source file to binary .prg file
-        run: java -jar $RUNNER_TOOL_CACHE/KickAss.jar -showmem $GITHUB_WORKSPACE/${{ steps.dotenv.outputs.c64_source_root }}/${{ steps.dotenv.outputs.c64_source_folder }}/${{ steps.dotenv.outputs.c64_source_file }}
+       run: java -jar $RUNNER_TOOL_CACHE/KickAss.jar -showmem $GITHUB_WORKSPACE/${{ steps.dotenv.outputs.c64_source_root }}/${{ steps.dotenv.outputs.c64_source_file }}
   
         # Check if the KickAss.jar exists in de ~/actions-runner/_work/_tool directory
       - name: Check 1541u2.pl existence
